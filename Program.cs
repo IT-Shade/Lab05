@@ -1,37 +1,36 @@
-﻿string role = "user";
+﻿int age = 17;
 
-string result = role switch 
+string category = age switch 
 {
-"admin" => "Полный доступ",
-"teacher" => "Доступ преподавателя",
-not "admin" => "Ограниченный доступ"
+    < 0 => "Ошибка",
+    >= 0 and <= 6 => "Ребёнок",
+    >= 7 and <= 17 => "Подросток",
+    >= 18 and <= 64 => "Взрослый",
+    >= 65 => "Пенсионер"
+};
+
+Console.WriteLine(category);
+
+int day = 2;
+
+string result = day switch
+{
+1 or 2 or 3 or 4 or 5 => "Будний",
+6 or 7 => "Выходной",
+_ => "Некорректный номер дня"
 };
 
 Console.WriteLine(result);
 
-int age = 20;
-bool hasTicket = true;
+int score = 64;
 
-string Result = age switch
+string Result = score switch 
 {
-    >= 18 when hasTicket => "Вход разрешён",
-    >= 18 => "Нет билета",
-    _ => "Возраст не подходит"
+>= 0 and <= 39 => "Неудовлетворительно",
+>= 40 and <= 59 => "Удовлетворительно",
+>= 60 and <= 79 => "Хорошо",
+>= 80 and <= 100 => "Отлично",
+_ => "Ошибка"
 };
 
 Console.WriteLine(Result);
-
-int level = 2;
-
-switch (level)
-{
-    case 1:
-    Console.WriteLine("Начальный уровень");
-    break;
-    case 2:
-    Console.WriteLine("Средний уровень");
-    goto case 1;
-    case 3:
-    Console.WriteLine("Продвинутый уровень");
-    break;
-}
