@@ -1,41 +1,37 @@
-﻿int dayNumber = 6;
+﻿string role = "user";
 
-switch (dayNumber)
+string result = role switch 
 {
-    case 5 or 6 or 7: Console.WriteLine("Выходной"); break;
-    default: Console.WriteLine("Будний"); break;
-}
-
-int score = 78;
-
-switch (score)
-{
-    case >= 0 and < 39:
-        Console.WriteLine("Неудовлетворительно");
-        break;
-    case >= 40 and < 59:
-        Console.WriteLine("Удовлетворительно");
-        break;
-    case >= 60 and < 79:
-        Console.WriteLine("Хорошо");
-        break;
-    case >= 80 and <= 100:
-        Console.WriteLine("Отлично");
-        break;
-    default:
-        Console.WriteLine("Некорректный балл");
-        break;
-}
-
-int temperature = 23;
-
-string category = temperature switch
-{
-    < 0 => "Мороз",
-    <= 14 => "Прохладно",
-    <= 24 => "Комфортно",
-    <= 34 => "Жарко",
-    _ => "Очень жарко"
+"admin" => "Полный доступ",
+"teacher" => "Доступ преподавателя",
+not "admin" => "Ограниченный доступ"
 };
 
-Console.WriteLine(category);
+Console.WriteLine(result);
+
+int age = 20;
+bool hasTicket = true;
+
+string Result = age switch
+{
+    >= 18 when hasTicket => "Вход разрешён",
+    >= 18 => "Нет билета",
+    _ => "Возраст не подходит"
+};
+
+Console.WriteLine(Result);
+
+int level = 2;
+
+switch (level)
+{
+    case 1:
+    Console.WriteLine("Начальный уровень");
+    break;
+    case 2:
+    Console.WriteLine("Средний уровень");
+    goto case 1;
+    case 3:
+    Console.WriteLine("Продвинутый уровень");
+    break;
+}
